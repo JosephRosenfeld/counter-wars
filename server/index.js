@@ -3,9 +3,10 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 app.get("/", (req, res) => {
+  console.log("tests");
   res.send("hello world");
 });
 
