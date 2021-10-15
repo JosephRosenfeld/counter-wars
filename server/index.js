@@ -12,25 +12,39 @@ app.get("/", async (req, res) => {
   try {
     console.log("hit meep");
     //next line always gets the oldest doc in the db
-    const counter = await Counter.find().sort({ _id: 1 }).limit(1);
+    const counter = await Counter.findOne().sort({ _id: 1 });
+    console.log(!counter);
     if (!counter) {
       console.log("no counter");
       const firstCounter = new Counter({
         count: 0,
       });
       await firstCounter.save();
-      res.status(201).json(firstCounter);
+      res.status(200).json(firstCounter);
     }
     res.status(200).json(counter);
   } catch (err) {
-    console.log("test");
     console.log(err);
+    res.status(404).json(err);
   }
 });
 
 //change count
 app.post("/", async (req, res) => {
   console.log(req.body.change);
+  const change = req.body.change;
+  try {
+    console.log("hit post");
+    const counter = await Counter.findOne().sort({ _id: 1 });
+    const updatedCounter = await Counter.findByIdAndUpdate(
+      counter._id,
+      { count: counter.count + change },
+      { new: true }
+    );
+    res.status(200).json(updatedCounter);
+  } catch (err) {
+    res.status(404).json(counter);
+  }
 });
 
 const PORT = process.env.PORT || 5000;

@@ -11,7 +11,7 @@ const App = () => {
   useEffect(() => {
     axios.get(url).then((res) => {
       console.log(res);
-      setCount(res.data[0].count);
+      setCount(res.data.count);
     });
   }, []);
 
