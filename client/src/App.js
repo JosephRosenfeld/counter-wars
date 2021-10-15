@@ -21,7 +21,8 @@ const App = () => {
         change: num,
       })
       .then(function (res) {
-        console.log(res);
+        console.log(res.data.count);
+        setCount(res.data.count);
       })
       .catch(function (err) {
         console.log(err);
