@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./components/Button/Button";
 import Counter from "./components/Counter/Counter";
-import FlipNumbers from "react-flip-numbers";
+import axios from "axios";
+
+const url = "http://localhost:5000";
 
 const App = () => {
-  const [count, setCount] = useState(200);
+  const [count, setCount] = useState(0);
 
-  console.log(count);
+  useEffect(() => {
+    axios.get(url).then((res) => {
+      console.log(res);
+      setCount(res.data.count);
+    });
+  }, []);
 
   const onClick = (num) => {
-    console.log("in on click");
-    setCount(count + num);
+    axios
+      .post(url, {
+        change: num,
+      })
+      .then(function (res) {
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
   };
 
   return (

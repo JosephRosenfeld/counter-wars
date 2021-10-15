@@ -2,7 +2,6 @@ import FlipNumbers from "react-flip-numbers";
 import "./Counter.css";
 
 const Counter = ({ count }) => {
-  console.log("in counter ", count);
   return (
     <div className='counter'>
       <FlipNumbers

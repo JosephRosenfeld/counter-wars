@@ -8,27 +8,27 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//return object count
 app.get("/", async (req, res) => {
   try {
-    console.log("got");
-    const count = await Counter.findOne();
-    if (!counts) {
-      const firstCount = new Counter({
+    console.log("hit meep");
+    const counter = await Counter.findOne();
+    if (!counter) {
+      console.log("no counter");
+      const firstCounter = new Counter({
         count: 0,
       });
-      firstCount.save();
-      res.status(200).json({ count: 0 });
-    } else {
-      res.status(200).json(count);
+      await firstCounter.save();
+      res.status(201).json(firstCounter);
     }
-  } catch (error) {
-    res.status(404).json({ message: error.messages });
+    res.status(200).json(counter);
+  } catch (err) {
+    console.log("test");
+    console.log(err);
   }
 });
 
 //change count
-app.post("/", (req, res) => {
+app.post("/", async (req, res) => {
   console.log(req.body.change);
 });
 
