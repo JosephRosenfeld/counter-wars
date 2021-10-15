@@ -1,7 +1,8 @@
 import FlipNumbers from "react-flip-numbers";
 import "./Counter.css";
 
-const Counter = () => {
+const Counter = ({ count }) => {
+  console.log("in counter ", count);
   return (
     <div className='counter'>
       <FlipNumbers
@@ -10,7 +11,8 @@ const Counter = () => {
         color='#fff'
         background='#333333'
         play
-        numbers='12345'
+        duration={0.6}
+        numbers={`${count}`}
       />
     </div>
   );
