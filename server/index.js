@@ -11,7 +11,8 @@ app.use(express.json());
 app.get("/", async (req, res) => {
   try {
     console.log("hit meep");
-    const counter = await Counter.findOne();
+    //next line always gets the oldest doc in the db
+    const counter = await Counter.find().sort({ _id: 1 }).limit(1);
     if (!counter) {
       console.log("no counter");
       const firstCounter = new Counter({
