@@ -48,8 +48,7 @@ app.post("/", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-const CONNECTION_URL =
-  "mongodb+srv://dbAdmin:Password123!@counterdb.atygd.mongodb.net/test";
+const CONNECTION_URL = process.env.CONNECTION_URL;
 
 mongoose
   .connect(CONNECTION_URL)
