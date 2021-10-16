@@ -3,7 +3,7 @@ import Button from "./components/Button/Button";
 import Counter from "./components/Counter/Counter";
 import axios from "axios";
 
-const url = "https://counter-wars.herokuapp.com/";
+const url = "http://localhost:5000";
 
 const App = () => {
   const [count, setCount] = useState(0);
@@ -13,7 +13,17 @@ const App = () => {
       console.log(res);
       setCount(res.data.count);
     });
+
+    const interval = setInterval(() => {
+      axios.get(url).then((res) => {
+        console.log(res);
+        setCount(res.data.count);
+      });
+    }, 2000);
+    return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {}, []);
 
   const onClick = (num) => {
     axios
