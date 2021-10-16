@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
-    "publishToHeroku": "cd ../ && git subtree push --prefix heroku-backend master || true"
+    "publishToHeroku": "cd ../ && git subtree push --prefix server heroku-backend main || true"
   },
   "keywords": [],
   "author": "",
