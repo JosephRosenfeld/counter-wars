@@ -3,7 +3,7 @@ import "./Counter.css";
 
 const Counter = ({ count }) => {
   return (
-    <div className='counter'>
+    <div className={count < 0 ? "negCounter" : "counter"}>
       <FlipNumbers
         height={50}
         width={50}
@@ -11,7 +11,7 @@ const Counter = ({ count }) => {
         background='#333333'
         play
         duration={0.6}
-        numbers={`${count}`}
+        numbers={count < 0 ? `−${count * -1}` : `${count}`}
       />
     </div>
   );

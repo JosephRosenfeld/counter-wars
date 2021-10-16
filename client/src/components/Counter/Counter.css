@@ -1,6 +1,17 @@
-.counter {
+.counter,
+.negCounter {
   padding: 10px;
   background-color: #333333;
   border-radius: 10px;
   box-shadow: 2px 4px 8px grey;
+}
+
+.negCounter section span:first-child {
+  color: white;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
 }
