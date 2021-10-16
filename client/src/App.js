@@ -3,7 +3,7 @@ import Button from "./components/Button/Button";
 import Counter from "./components/Counter/Counter";
 import axios from "axios";
 
-const url = "http://localhost:5000";
+const url = "https://counter-wars.herokuapp.com/";
 
 const App = () => {
   const [count, setCount] = useState(0);
