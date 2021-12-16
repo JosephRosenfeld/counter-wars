@@ -1,6 +1,6 @@
 # counter-wars
 
-Good ideas are overrated... lol
+Good ideas are overrated...
 
 This is just a simple MERN app based around a counter. Any user can go in and increment/decrement the counter
 
